@@ -1,0 +1,99 @@
+<!--
+{% if message is defined %}
+  {% if message == "hello!" %}
+    <h1>Server says hello!</h1>
+  {% else %}
+    <h1>Server said something else.</h1>
+  {% endif %}
+{% else %}
+  <h1>Server said nothing.</h1>
+{% endif %}
+--->
+
+
+
+<!----
+<table border="1">
+  <tr><td>Prime Minister</td></tr>
+  {% for n in names %}
+    <tr><td>{{n}}</td></tr>
+  {% endfor %}
+</table>
+
+----->
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{{ url_for('static', filename='template.css') }}">
+
+<div id="wrapper">
+  <div id="header"><h1>A new website</h1></div>
+  <div id="left">
+    <ul>
+      <li><a href="#">hyperlink</a></li>
+      <li><a href="#">hyperlink</a></li> 
+      <li><a href="#">hyperlink</a></li> 
+    </ul>  
+  </div>
+  <div id="right">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nisl magna, ultrices non ligula nec, interdum malesuada magna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aenean vulputate lorem condimentum, sollicitudin metus id, posuere ipsum. Nulla a nisi egestas, mattis nisl pretium, aliquam sapien. Morbi luctus velit ut nunc suscipit, non sodales urna suscipit. In ornare id risus vel ultrices. Quisque a mollis ipsum, quis iaculis nisl. Ut sit amet auctor lorem. Curabitur sed facilisis dui, pulvinar scelerisque lacus.</p>
+  </div>
+  <div id="footer">&copy; 2020 all rights reserved</div>
+</div>
+
+<p>Type something in the text input fields:</p>
+
+<form action="/post_input" method="POST">
+  <input type="text" name="myInput" placeholder="uses POST">
+  <input type="submit" value="Submit via POST">
+</form>
+
+<form action="/get_input" method="GET">
+  <input type="text" name="myInput" placeholder="uses GET">
+  <input type="submit" value="Submit via GET">
+</form>
+
+
+{% if time is defined %}
+  <p>Session commenced at: {{time}}</p>
+  <a href="/stop_session">stop session</a>
+{% else %}
+  <a href="/start_session">start session</a>
+{% endif %}
+
+
+<style type="text/css">
+#wrapper {
+    display: grid;
+    grid-template-areas:
+        'header header'
+        'leftcol rightcol'
+        'footer footer';
+    width: 90vw; /* 90% of viewport width */
+    margin: auto; /* centres the element */
+    /* normal size 3 rows x 2 columns: */
+    grid-template-rows: 10vh auto 10vh;
+    grid-template-columns: 20vw 70vw;
+}
+
+/* if the screen is small, less than 600px: */
+@media screen and (max-width: 600px) {
+    #wrapper {
+        display: grid;
+        grid-template-areas: /* stack: */
+            'header'
+            'leftcol'
+            'rightcol'
+            'footer';
+        /* small size 4 rows x 1 column: */
+        grid-template-rows: 10vh auto auto 10vh;
+        grid-template-columns: 100vw;
+    }
+}
+
+#header { background-color: firebrick; grid-area: header; }
+#left { background-color: #D3D3D3; grid-area: leftcol; }
+#right { background-color: salmon; grid-area: rightcol; }
+#footer { background-color: papayawhip; grid-area: footer; }	
+
+
+</style>

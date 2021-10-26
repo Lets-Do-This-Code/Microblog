@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1>Sign in</h1>
+	<br>
+	<!-- Hiddind felds that protect agind sea surf attacks this felds + secret key will defnd it CSRF attacts --->
+	<form action="" method="post" novalidate>
+		{{form.hidden_tag()}}
+		<br>
+		<p>
+				<!-- Forms for username feild will diplay the words form.feld()will diblay the fild --->
+			{{form.username.label}}<br>
+			{{form.username(size=32)}}
+
+		</p>
+		<p>
+			{{form.password.label}}<br>
+			{{form.password(size=32)}}
+
+		</p>
+		<p>
+			{{form.remember_me()}}
+			{{form.remember_me.label}}<br>
+
+		</p>
+		<p>
+			{{form.submit()}}
+			{{form.submit.label}}<br>
+		</p>
+
+{% endblock %}
